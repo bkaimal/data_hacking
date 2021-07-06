@@ -42,7 +42,7 @@ def evaluate_url(model, url):
     dict_match = model['dict_counts'] * model['dict_vc'].transform([url]).T
 
     # Assemble feature matrix (for just one domain)
-    X = [len(domain), entropy(domain), alexa_match, dict_match]
+    X = [[len(domain), entropy(domain), alexa_match, dict_match]]
     y_pred = model['clf'].predict(X)[0]
     print '%s : %s' % (domain, y_pred)
     return y_pred
